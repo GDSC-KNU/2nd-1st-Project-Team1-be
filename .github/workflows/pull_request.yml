@@ -1,5 +1,5 @@
 name: Build when pull_request
-run-name: @${{ github.actor }} request PR
+run-name: PR by @${{ github.actor }}
 
 on: [ pull_request ]
 
