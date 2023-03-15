@@ -1,8 +1,7 @@
-package com.gdsc.canigraduate.domain.lecture;
+package com.gdsc.canigraduate.domain.user.lecture;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,21 +9,21 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LectureDetail {
+public class UserLectureDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="DETAIL_ID")
+    @Column(name = "DETAIL_ID")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="LECTURE_ID")
-    private Lecture lecture;
+    @JoinColumn(name = "LECTURE_ID")
+    private UserLecture userLecture;
 
     private String lectureName;
 
     private Integer credit;
 
     @Enumerated(EnumType.STRING)
-    private LectureType lectureType;
+    private UserLectureType userLectureType;
 }

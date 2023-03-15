@@ -1,7 +1,7 @@
 package com.gdsc.canigraduate.domain.user;
 
 import com.gdsc.canigraduate.domain.BaseEntity;
-import com.gdsc.canigraduate.domain.lecture.Lecture;
+import com.gdsc.canigraduate.domain.user.lecture.UserLecture;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,7 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name="users")
+@Table(name = "users")
 public class User extends BaseEntity {
 
     private String name;
@@ -38,8 +38,8 @@ public class User extends BaseEntity {
 
     private String token;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private List<Lecture> lectureList = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserLecture> userLectureList = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,14 +47,14 @@ public class User extends BaseEntity {
     private Long id;
 
     @Builder
-    public User(String classId, String pw, String name){
+    public User(String classId, String pw, String name) {
         this.classId = classId;
         this.userPw = pw;
         this.name = name;
         this.token = UUID.randomUUID().toString();
     }
 
-    public void pwUpdate(String pw){
+    public void pwUpdate(String pw) {
         this.userPw = pw;
     }
 }
