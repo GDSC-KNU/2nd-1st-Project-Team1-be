@@ -85,11 +85,13 @@ public class User extends BaseEntity {
         this.token = UUID.randomUUID().toString();
         this.department = department;
         this.admissionYear = admissionYear;
+        this.semester = 0;
         this.majorCredit = 0;
         this.cultureCredit = 0;
         this.normalCredit = 0;
         this.basicMajorCredit = 0;
         this.techMajorCredit = 0;
+        this.presentCredit = 0;
         this.restMajor = 0;
         this.restCulture = 0;
         this.restNormal = 0;

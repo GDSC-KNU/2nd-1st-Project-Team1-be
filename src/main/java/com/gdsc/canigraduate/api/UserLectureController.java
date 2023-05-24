@@ -111,6 +111,9 @@ public class UserLectureController {
         if(user == null){
             throw new IllegalStateException("존재하지 않는 회원입니다.");
         }
+        if(!userLectureDetailService.findSameDetail(user,dto)) {
+            return ResponseEntity.badRequest().body(new ResponseDto("이미 등록된 수업입니다."));
+        }
         userLectureDetailService.add_one(dto,user);
         return ResponseEntity.ok().body(new ResponseDto("수업 추가"));
     }

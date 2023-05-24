@@ -59,6 +59,7 @@ public class UserLectureDetailService {
             user.subSemester(1);
         }
         deleteByLectureDetail(lectureDetail);
+        user.calRestCredit();
         return true;
     }
 
@@ -87,5 +88,19 @@ public class UserLectureDetailService {
         }
         user.addCredit(credit);
         user.addDetailCredit(credit,detail.getUserLectureType());
+        user.calRestCredit();
+    }
+
+    public boolean findSameDetail(User user, UserLectureDetailDTO dto){
+        List<UserLecture> userLectureList = user.getUserLectureList();
+        for (UserLecture userLecture : userLectureList) {
+            List<UserLectureDetail> details = userLecture.getLectureDetails();
+            for (UserLectureDetail detail : details) {
+                if(detail.getLectureName().equals(dto.getLectureName())) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
